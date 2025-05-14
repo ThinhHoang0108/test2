@@ -1,0 +1,13 @@
+/* Enter your custom styles here */
+/* .Label{
+    color: blue;
+    background-color: chartreuse;
+    font-size: 800;
+} */
+.customHeader .sapMBarPH {
+    align-items: center;
+    display: inline-block;
+    height: 3rem;
+    vertical-align: top;
+    background-color: rgb(136, 217, 255);
+}

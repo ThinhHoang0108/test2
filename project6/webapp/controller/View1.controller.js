@@ -26,8 +26,9 @@ sap.ui.define([
 
                     // Set the model to the view with a named model "oJsonForView"
                     this.getView().setModel(oJsonModel, "oJsonForView");
-
+                                                           
                     // Optionally set a property "/TravelData" in the default model
+                    //test commit
                     this.getView().getModel().setProperty("/TravelData", orderData.results);
                 }.bind(this),
                 error: function (oError) {

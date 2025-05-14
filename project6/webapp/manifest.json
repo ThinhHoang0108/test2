@@ -1,7 +1,7 @@
 {
   "_version": "1.65.0",
   "sap.app": {
-    "id": "project4",
+    "id": "com.sap.project6",
     "type": "application",
     "i18n": "i18n/i18n.properties",
     "applicationVersion": {
@@ -12,8 +12,8 @@
     "resources": "resources.json",
     "sourceTemplate": {
       "id": "@sap/generator-fiori:basic",
-      "version": "1.17.4",
-      "toolsId": "df074a23-332a-4e49-8b8c-f1cabbf835e0"
+      "version": "1.17.5",
+      "toolsId": "792f8536-593c-4dda-af80-7c26c0b55777"
     },
     "dataSources": {
       "ZUDEMY_02_SD_U_TRAVEL_VAN": {
@@ -69,7 +69,7 @@
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "project4.i18n.i18n"
+          "bundleName": "com.sap.project6.i18n.i18n"
         }
       },
       "": {
@@ -77,7 +77,6 @@
         "preload": true,
         "settings": {}
       }
-  }
     },
     "resources": {
       "css": [
@@ -94,9 +93,9 @@
         "transition": "slide",
         "type": "View",
         "viewType": "XML",
-        "path": "project4.view",
+        "path": "com.sap.project6.view",
         "async": true,
-        "viewPath": "project4.view"
+        "viewPath": "com.sap.project6.view"
       },
       "routes": [
         {
@@ -115,10 +114,10 @@
       }
     },
     "rootView": {
-      "viewName": "project4.view.App",
+      "viewName": "com.sap.project6.view.App",
       "type": "XML",
       "id": "App",
       "async": true
     }
   }
-
+}

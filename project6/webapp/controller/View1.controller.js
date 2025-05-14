@@ -4,13 +4,13 @@ sap.ui.define([
     "sap/ui/model/FilterOperator",
     "sap/m/MessageBox",
     "sap/m/SelectDialog",
-    "project4/utils/formatter",
+    // "project6/utils/formatter",
     "sap/ui/core/Fragment",
-], (Controller, Filter, FilterOperator, MessageBox, SelectDialog, Formatter, Fragment) => {
+], (Controller, Filter, FilterOperator, MessageBox, SelectDialog, Fragment) => {
     "use strict";
 
-    return Controller.extend("project4.controller.View1", {
-        formatter: Formatter,
+    return Controller.extend("project6.controller.View1", {
+        // formatter: Formatter,
 
         onInit: function () {
             this.getOwnerComponent().getModel().read("/Travel", {
@@ -18,10 +18,17 @@ sap.ui.define([
                     "$expand": "to_customer,to_agency"
                 },
                 success: function (orderData) {
-                    var lv_d1 = orderData.results;
+                    // Create a new JSON model
                     var oJsonModel = new sap.ui.model.json.JSONModel();
-                    oJsonModel.setData(lv_d1);
+
+                    // Set the data to the JSON model directly from orderData.results
+                    oJsonModel.setData(orderData.results);
+
+                    // Set the model to the view with a named model "oJsonForView"
                     this.getView().setModel(oJsonModel, "oJsonForView");
+
+                    // Optionally set a property "/TravelData" in the default model
+                    this.getView().getModel().setProperty("/TravelData", orderData.results);
                 }.bind(this),
                 error: function (oError) {
                     console.log("fail connected");
@@ -105,7 +112,7 @@ sap.ui.define([
 
         f4HelpForAgencyId: function () {
             if (!this.agID) {
-                this.agID = sap.ui.xmlfragment("project4/fragments/Travel", this);
+                this.agID = sap.ui.xmlfragment("project6/fragments/Travel", this);
                 this.getView().addDependent(this.agID);
             }
             this.agID.open();
@@ -113,7 +120,7 @@ sap.ui.define([
 
         f4HelpForCustomerId: function () {
             if (!this.cusID) {
-                this.cusID = sap.ui.xmlfragment("project4/fragments/Customer", this);
+                this.cusID = sap.ui.xmlfragment("project6/fragments/Customer", this);
                 this.getView().addDependent(this.cusID);
             }
             this.cusID.open();
@@ -169,10 +176,10 @@ sap.ui.define([
             return new Promise((resolve, reject) => {
                 Fragment.load({
                     id: this.getView().getId(),
-                    name: `project4.fragments.${sFragmentName}`,
+                    name: `com.sap.project6.fragments.${sFragmentName}`,
                     controller: this
                 }).then(oDialog => {
-                    this.getView().addDependent(oDialog)
+                    this.getView().addDependent(oDialog);
                     resolve(oDialog)
                 })
             })

@@ -1,0 +1,6 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+    <SelectDialog id="agencyDialog" noDataText="No Agency Found" title="Select Agency" search=".onSearch" searchPlaceholder="Search Products" confirm=".onValueHelpDialogClose" cancel=".onValueHelpDialogClose" showClearButton="true" items="{oJsonForView>/}">
+        <ObjectListItem id="_IDGenObjectListItem2" title="{oJsonForView>AgencyId}">
+            <ObjectAttribute id="_IDGenObjectAttribute4" text="{oJsonForView>to_agency/Name}"/></ObjectListItem>
+    </SelectDialog>
+</core:FragmentDefinition>

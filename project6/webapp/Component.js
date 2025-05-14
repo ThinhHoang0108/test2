@@ -1,10 +1,10 @@
 sap.ui.define([
     "sap/ui/core/UIComponent",
-    "project4/model/models"
+    "com/sap/project6/model/models"
 ], (UIComponent, models) => {
     "use strict";
 
-    return UIComponent.extend("project4.Component", {
+    return UIComponent.extend("com.sap.project6.Component", {
         metadata: {
             manifest: "json",
             interfaces: [
@@ -21,7 +21,6 @@ sap.ui.define([
 
             // enable routing
             this.getRouter().initialize();
-            
         }
     });
 });

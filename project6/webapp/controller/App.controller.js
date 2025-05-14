@@ -3,8 +3,8 @@ sap.ui.define([
 ], (BaseController) => {
   "use strict";
 
-  return BaseController.extend("project4.controller.App", {
-    onInit() {
-    }
+  return BaseController.extend("com.sap.project6.controller.App", {
+      onInit() {
+      }
   });
 });

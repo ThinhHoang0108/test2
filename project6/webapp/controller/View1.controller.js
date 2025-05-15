@@ -6,7 +6,8 @@ sap.ui.define([
     "sap/m/SelectDialog",
     "sap/ui/core/Fragment",
     "com/sap/project6/model/formatter1",
-], (Controller, Filter, FilterOperator, MessageBox, SelectDialog, Fragment, formatter) => {
+    "sap/ui/export/Spreadsheet",
+], (Controller, Filter, FilterOperator, MessageBox, SelectDialog, Fragment, formatter, Spreadsheet) => {
     "use strict";
 
     return Controller.extend("project6.controller.View1", {
@@ -191,6 +192,44 @@ sap.ui.define([
                     resolve(oDialog)
                 })
             })
+        },
+        downloadExcel: function () {
+            var oTable = this.byId("travelList");
+            var aSelectedItems = oTable.getSelectedItems();
+            var aSelectedData = [];
+            aSelectedItems.forEach(function (dataItem) {
+                var dataContext = dataItem.getBindingContext("oJsonForView");
+                if (dataContext) {
+                    aSelectedData.push(dataContext.getObject());
+                }
+            });
+            if(aSelectedData.length === 0){
+                MessageBox.warning("Please select atleast one row before downloand");
+                return;
+            
+            }
+            this._generateExcel(aSelectedData);
+            // console.log(oTable);
+        },
+        _generateExcel: function (aSelectedData) {
+            var aColumn = [
+                { lable: "Travel no", property: "TravelId" },
+                { lable: "Agency no", property: "AgencyId" },
+                { lable: "Customer no", property: "CustomerId" },
+                { lable: "Total price", property: "TotalPrice" },
+                { lable: "TCurrency Code", property: "CurrencyCode" },
+                { lable: "Description", property: "Description" },
+                { lable: "Status", property: "Status" },
+                { lable: "Begin Date", property: "BeginDate", type: 'Date', format: 'dd-mm-yyyy' },
+                { lable: "End Date", property: "EndDate", type: 'Date', format: 'dd-mm-yyyy' },
+            ];
+            var oSetting = {
+                workbook: { columns: aColumn },
+                dataSource: aSelectedData,
+                fileName: "selected_data.xlxs"
+            };
+            var oSpreadsheet = new Spreadsheet(oSetting);
+            oSpreadsheet.build();
         }
     });
 });

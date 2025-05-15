@@ -6,9 +6,10 @@
                 <Title id="_IDGenTitle" text="Travel" level="H2"/>
                 <ToolbarSpacer id="_IDGenToolbarSpacer1"></ToolbarSpacer>
                 <Button id="addTravel" icon="sap-icon://add" text="Create" press="onPressAddNewProduct"/>
+                <Button id="downExcel" icon="sap-icon://download" text="Download" press="downloadExcel"/>
             </OverflowToolbar>
             <ScrollContainer id="_IDGenScrollContainer" vertical="true" horizontal="true">
-                <Table id="_IDGenTable1" items="{oJsonForView>/}">
+                <Table id="travelList" items="{oJsonForView>/}" mode="MultiSelect">
                     <columns>
                         <Column id="_IDGenColumn"><Text id="_IDGenText" width="5rem" text="Travel no"/></Column>
                         <Column id="_IDGenColumn1"><Text id="_IDGenText1" width="5rem" text="Agency no"/></Column>

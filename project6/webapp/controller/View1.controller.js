@@ -4,25 +4,26 @@ sap.ui.define([
     "sap/ui/model/FilterOperator",
     "sap/m/MessageBox",
     "sap/m/SelectDialog",
-    // "project6/utils/formatter",
     "sap/ui/core/Fragment",
-], (Controller, Filter, FilterOperator, MessageBox, SelectDialog, Fragment) => {
+    "com/sap/project6/model/formatter1",
+], (Controller, Filter, FilterOperator, MessageBox, SelectDialog, Fragment, Formatter) => {
     "use strict";
 
     return Controller.extend("project6.controller.View1", {
-        // formatter: Formatter,
+        formatter: Formatter,
 
         onInit: function () {
+
             this.getOwnerComponent().getModel().read("/Travel", {
                 urlParameters: {
                     "$expand": "to_customer,to_agency"
                 },
                 success: function (orderData) {
                     // console.log(orderData.results);
-                    
+
                     for (let i = 0; i < orderData.results.length; i++) {
                         orderData.results[i].newColumn = orderData.results[i].FirstName + orderData.results[i].LastName;
-                        
+
                     }
                     // Create a new JSON model
                     var oJsonModel = new sap.ui.model.json.JSONModel();

@@ -1,6 +1,10 @@
 sap.ui.define([
     "sap/ui/core/UIComponent",
-    "com/sap/project6/model/models"
+    "com/sap/project6/model/models",
+    "sap/ui/core/mvc/Controller",
+    "sap/ui/model/Filter",
+    "sap/ui/model/FilterOperator",
+    "sap/m/MessageBox",
 ], (UIComponent, models) => {
     "use strict";
 
@@ -21,6 +25,7 @@ sap.ui.define([
 
             // enable routing
             this.getRouter().initialize();
+     
         }
     });
 });

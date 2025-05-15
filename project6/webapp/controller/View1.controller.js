@@ -18,6 +18,12 @@ sap.ui.define([
                     "$expand": "to_customer,to_agency"
                 },
                 success: function (orderData) {
+                    // console.log(orderData.results);
+                    
+                    for (let i = 0; i < orderData.results.length; i++) {
+                        orderData.results[i].newColumn = orderData.results[i].FirstName + orderData.results[i].LastName;
+                        
+                    }
                     // Create a new JSON model
                     var oJsonModel = new sap.ui.model.json.JSONModel();
 
@@ -26,7 +32,7 @@ sap.ui.define([
 
                     // Set the model to the view with a named model "oJsonForView"
                     this.getView().setModel(oJsonModel, "oJsonForView");
-                                                           
+
                     // Optionally set a property "/TravelData" in the default model
                     //test commit
                     this.getView().getModel().setProperty("/TravelData", orderData.results);

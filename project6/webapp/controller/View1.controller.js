@@ -6,11 +6,11 @@ sap.ui.define([
     "sap/m/SelectDialog",
     "sap/ui/core/Fragment",
     "com/sap/project6/model/formatter1",
-], (Controller, Filter, FilterOperator, MessageBox, SelectDialog, Fragment, Formatter) => {
+], (Controller, Filter, FilterOperator, MessageBox, SelectDialog, Fragment, formatter) => {
     "use strict";
 
     return Controller.extend("project6.controller.View1", {
-        formatter: Formatter,
+        f: formatter,
 
         onInit: function () {
 
